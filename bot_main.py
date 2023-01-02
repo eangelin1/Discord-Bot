@@ -13,7 +13,8 @@ import aiohttp
 from discord.ext import commands
 import json
 
-bot = commands.Bot(command_prefix='$',intents=discord.Intents.all())
+activity = discord.Activity(type=discord.ActivityType.watching, name="$help")
+bot = commands.Bot(command_prefix='$',intents=discord.Intents.all(), activity=activity, status=discord.Status.idle)
 
 bot.remove_command('help')
 
