@@ -11,6 +11,7 @@ import random
 from discord import FFmpegPCMAudio, PCMVolumeTransformer
 import aiohttp
 from discord.ext import commands
+import json
 
 bot = commands.Bot(command_prefix='$',intents=discord.Intents.all())
 
@@ -18,8 +19,11 @@ bot.remove_command('help')
 
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5','options': '-vn'}
 
-ytApiKey = 'AIzaSyBg4SgHq_VRqFktjOD_DwvvHzmKamBz_ck'
-discordApiKey = 'OTk1NDUwMzEzNDE2OTEyOTc2.G_9XCk.7QAkW0JJJkc59Dd0rfPTXpbQWxCdqs8LfwoB2Y'
+f = open("./assets/tokens.json")
+data = json.load(f)
+
+ytApiKey = data['ytApiKey']
+discordApiKey = data['discordApiKey']
 
 logging.basicConfig(level=logging.INFO)
 
