@@ -88,8 +88,40 @@ async def on_ready():
     
 @bot.event
 async def on_message(message):
+    if message.author == bot.user:
+        return
+
     if message.content.find("https://tenor.com/view/") != -1:
         await message.channel.send("Yeah haha good one :neutral_face:")
+
+    elif message.content.find("melee") != -1 or message.content.find("Melee") != -1:
+        await message.channel.send("https://youtu.be/W2c7UKndk8g?t=6")
+
+    elif message.content.find("vaporeon") != -1 or message.content.find("Vaporeon") != -1:
+        await message.channel.send("Hey guys, did you know that in terms of male" \
+                                   "human and female Pokemon breeding, Vaporeon " \
+                                   "is the most compatible Pokemon for humans? " \
+                                   "Not only are they in the field egg group, " \
+                                   "which is mostly comprised of mammals, Vaporeon" \
+                                   " are an average of 3\"03' tall and 63.9 pounds, " \
+                                   "this means they're large enough to be able handle " \
+                                   "human dicks, and with their impressive Base Stats" \
+                                   " for HP and access to Acid Armor, you can be rough " \
+                                   "with one. Due to their mostly water based biology, " \
+                                   "there's no doubt in my mind that an aroused Vaporeon " \
+                                   "would be incredibly wet, so wet that you could easily " \
+                                   "have sex with one for hours without getting sore. " \
+                                   "They can also learn the moves Attract, Baby-Doll " \
+                                   "Eyes, Captivate, Charm, and Tail Whip, along with not " \
+                                   "having fur to hide nipples, so it'd be incredibly easy "\
+                                   "for one to get you in the mood. With their abilities "\
+                                   "Water Absorb and Hydration, they can easily recover "\
+                                   "from fatigue with enough water. No other Pokemon comes "\
+                                   "close to this level of compatibility. Also, fun fact, "\
+                                   "if you pull out enough, you can make your Vaporeon turn "\
+                                   "white. Vaporeon is literally built for human dick. "\
+                                   "Ungodly defense stat+high HP pool+Acid Armor means "\
+                                   "it can take cock all day, all shapes and sizes and still come for more")
 
     await bot.process_commands(message)
 
@@ -101,14 +133,19 @@ async def on_command_error(ctx, e):
 @bot.command()
 async def help(ctx):
     await ctx.send(
-        '$hello         = HIII\n'+
-        '$yt -query     = Search YouTube for videos matching the query\n'+
-        '$brap          = BRAAAPPP\n'+
-        '$snifff        = SNIFF SNFFF **SNIIFF**\n'+
-        '$leave         = Makes me leave your voice channel :cry:\n' +
-        '$cat           = Random cat pic and (***possibly morbid***) cat fact :3\n' +
-        '$storm         = Chill storm sounds to vibe and relax to\n' +
-        '$wiki -query   = *Knowledge for you, sir* >w<'
+        '`Currently supported commands:\n' +
+        '\t$brap          = BRAAAPPP\n'+
+        '\t$cat           = Random cat pic and (possibly morbid) cat fact :3\n' +
+        '\tforest         = Forest sounds to vibe and relax to\n' +
+        '\t$frying        = Sounds an awful lot like something else\n' +
+        '\t$hello         = HIII\n'+
+        '\t$leave         = Makes me leave your voice channel\n' +
+        '\t$ocean         = Ocean sounds to vibe and relax to\n' +
+        '\t$snifff        = SNIFF SNFFF SNIIFF\n'+
+        '\t$stop          = I discriminate against bad sound >:|\n' +
+        '\t$storm         = Chill storm sounds to vibe and relax to\n' +
+        '\t$wiki -query   = Knowledge for you, sir >w<\n' +
+        '\t$yt -query     = Search YouTube for videos matching the query\n`'
     )
 
 @bot.command()
@@ -187,6 +224,69 @@ async def snifff(ctx):
             vc = ctx.voice_client
 
         await Play('gvSnBjaiXXs',ctx)
+
+@bot.command()
+async def frying(ctx):
+
+        vc = ctx.voice_client
+
+        if(vc != None):
+            if(vc.is_playing()):
+                vc.stop()
+
+        if(ctx.author.voice is None):
+            await ctx.send("You are not in a voice channel ~.~")
+            return
+        authorChannel = ctx.author.voice.channel
+        
+        if(not ctx.voice_client):
+            vc = await authorChannel.connect()
+        else:
+            vc = ctx.voice_client
+
+        await Play('4_2Dgn-CgYw',ctx)
+
+@bot.command()
+async def ocean(ctx):
+
+        vc = ctx.voice_client
+
+        if(vc != None):
+            if(vc.is_playing()):
+                vc.stop()
+
+        if(ctx.author.voice is None):
+            await ctx.send("You are not in a voice channel ~.~")
+            return
+        authorChannel = ctx.author.voice.channel
+        
+        if(not ctx.voice_client):
+            vc = await authorChannel.connect()
+        else:
+            vc = ctx.voice_client
+
+        await Play('bn9F19Hi1Lk',ctx)
+        
+@bot.command()
+async def forest(ctx):
+
+        vc = ctx.voice_client
+
+        if(vc != None):
+            if(vc.is_playing()):
+                vc.stop()
+
+        if(ctx.author.voice is None):
+            await ctx.send("You are not in a voice channel ~.~")
+            return
+        authorChannel = ctx.author.voice.channel
+        
+        if(not ctx.voice_client):
+            vc = await authorChannel.connect()
+        else:
+            vc = ctx.voice_client
+
+        await Play('3TNK916Pjto',ctx)
 
 @bot.command()
 async def leave(ctx):
