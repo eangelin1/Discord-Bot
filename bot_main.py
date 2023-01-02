@@ -42,6 +42,25 @@ random.seed()
 youtube = googleapiclient.discovery.build(
     api_service_name, api_version, developerKey = ytApiKey)
 
+async def ConVC(ctx):
+        
+        vc = ctx.voice_client
+
+        if(vc != None):
+            if(vc.is_playing()):
+                vc.stop()
+
+        if(ctx.author.voice is None):
+            await ctx.send("You are not in a voice channel ~.~")
+            return
+
+        authorChannel = ctx.author.voice.channel
+        
+        if(not ctx.voice_client):
+            vc = await authorChannel.connect()
+        else:
+            vc = ctx.voice_client
+
 async def YtSearch(query):
     # 'request' variable is the only thing you must change
     # depending on the resource and method you need to use
@@ -91,7 +110,7 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-    if message.content.find("https://tenor.com/view/") != -1:
+    if message.content.find("https://twitter.com/") != -1:
         await message.channel.send("Yeah haha good one :neutral_face:")
 
     elif message.content.find("melee") != -1 or message.content.find("Melee") != -1:
@@ -136,6 +155,7 @@ async def help(ctx):
         '`Currently supported commands:\n' +
         '\t$brap          = BRAAAPPP\n'+
         '\t$cat           = Random cat pic and (possibly morbid) cat fact :3\n' +
+        '\t$fard          = Quick brap ~~\n' +
         '\tforest         = Forest sounds to vibe and relax to\n' +
         '\t$frying        = Sounds an awful lot like something else\n' +
         '\t$hello         = HIII\n'+
@@ -154,24 +174,8 @@ async def hello(ctx):
 
 @bot.command()
 async def yt(ctx,*query):
-
-        vc = ctx.voice_client
-
-        if(vc != None):
-            if(vc.is_playing()):
-                vc.stop()
-
-        if(ctx.author.voice is None):
-            await ctx.send("You are not in a voice channel ~.~")
-            return
-
-        authorChannel = ctx.author.voice.channel
         
-        if(not ctx.voice_client):
-            vc = await authorChannel.connect()
-        else:
-            vc = ctx.voice_client
-
+        await ConVC(ctx)
         
         searchResult = await YtSearch(query)
         videoId = searchResult["items"][0]["id"]["videoId"]
@@ -184,107 +188,43 @@ async def yt(ctx,*query):
 
 @bot.command()
 async def brap(ctx):
-
-        vc = ctx.voice_client
-
-        if(vc != None):
-            if(vc.is_playing()):
-                vc.stop()
-
-        if(ctx.author.voice is None):
-            await ctx.send("You are not in a voice channel ~.~")
-            return
-
-        authorChannel = ctx.author.voice.channel
         
-        if(not ctx.voice_client):
-            vc = await authorChannel.connect()
-        else:
-            vc = ctx.voice_client
+        await ConVC(ctx)
 
         await Play('4gcs5k8n-FY',ctx)
 
 @bot.command()
+async def fard(ctx):
+
+        await ConVC(ctx)
+
+        await Play('jKcRDgobqzA',ctx)
+
+@bot.command()
 async def snifff(ctx):
 
-        vc = ctx.voice_client
-
-        if(vc != None):
-            if(vc.is_playing()):
-                vc.stop()
-
-        if(ctx.author.voice is None):
-            await ctx.send("You are not in a voice channel ~.~")
-            return
-        authorChannel = ctx.author.voice.channel
-        
-        if(not ctx.voice_client):
-            vc = await authorChannel.connect()
-        else:
-            vc = ctx.voice_client
+        await ConVC(ctx)
 
         await Play('gvSnBjaiXXs',ctx)
 
 @bot.command()
 async def frying(ctx):
 
-        vc = ctx.voice_client
-
-        if(vc != None):
-            if(vc.is_playing()):
-                vc.stop()
-
-        if(ctx.author.voice is None):
-            await ctx.send("You are not in a voice channel ~.~")
-            return
-        authorChannel = ctx.author.voice.channel
-        
-        if(not ctx.voice_client):
-            vc = await authorChannel.connect()
-        else:
-            vc = ctx.voice_client
+        await ConVC(ctx)
 
         await Play('4_2Dgn-CgYw',ctx)
 
 @bot.command()
 async def ocean(ctx):
 
-        vc = ctx.voice_client
-
-        if(vc != None):
-            if(vc.is_playing()):
-                vc.stop()
-
-        if(ctx.author.voice is None):
-            await ctx.send("You are not in a voice channel ~.~")
-            return
-        authorChannel = ctx.author.voice.channel
-        
-        if(not ctx.voice_client):
-            vc = await authorChannel.connect()
-        else:
-            vc = ctx.voice_client
+        await ConVC(ctx)
 
         await Play('bn9F19Hi1Lk',ctx)
         
 @bot.command()
 async def forest(ctx):
 
-        vc = ctx.voice_client
-
-        if(vc != None):
-            if(vc.is_playing()):
-                vc.stop()
-
-        if(ctx.author.voice is None):
-            await ctx.send("You are not in a voice channel ~.~")
-            return
-        authorChannel = ctx.author.voice.channel
-        
-        if(not ctx.voice_client):
-            vc = await authorChannel.connect()
-        else:
-            vc = ctx.voice_client
+        await ConVC(ctx)
 
         await Play('3TNK916Pjto',ctx)
 
@@ -326,22 +266,8 @@ async def cat(ctx):
 
 @bot.command()
 async def storm(ctx):
-
-        vc = ctx.voice_client
-
-        if(vc != None):
-            if(vc.is_playing()):
-                vc.stop()
-
-        if(ctx.message.author.voice is None):
-            await ctx.send("You are not in a voice channel ~.~")
-            return
-        authorChannel = ctx.author.voice.channel
-        
-        if(not ctx.voice_client):
-            vc = await authorChannel.connect()
-        else:
-            vc = ctx.voice_client
+    
+        await ConVC(ctx)
 
         await Play("nDq6TstdEi8", ctx)
 

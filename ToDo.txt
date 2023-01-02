@@ -1,5 +1,5 @@
 Youtube search *
-wikipedia search
+wikipedia search *
 
 Friend suggestions:
     Fart button *
@@ -11,3 +11,12 @@ Friend suggestions:
             - database maybe (similar to cat image gen)
     'haha nice one :nuetral_face:' after gif *
     cat *
+
+    ocean/forest *
+    kick ifunny linkers
+        - don't have the permissions
+    vaporeon copypasta *
+    hbox popoff *
+    piss sound (fried bacon) *
+
+    host bot online (heroku?)
